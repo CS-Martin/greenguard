@@ -11,6 +11,6 @@ Greengard is an AI-driven mobile application designed to detect plant diseases f
 - [**Plant Village**](https://plantvillage.psu.edu/)
 - [**Plant Disease Expert**](https://www.kaggle.com/datasets/sadmansakibmahi/plant-disease-expert)
 
-# Technology Stack:
+### Technology Stack:
 
-# How to Use:
+### How to Use:
