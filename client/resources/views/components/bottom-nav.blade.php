@@ -1,5 +1,5 @@
-<div class="fixed bottom-0 sm:w-[500px] w-full p-4 bg-white text-white border border-t mx-auto justify-center">
-    <div class=" flex flex-row items-center justify-evenly gap-x-44 py-2">
+<div class="fixed  bottom-0 sm:w-[500px] w-full p-4 bg-white text-white border border-t mx-auto justify-center">
+    <div class=" flex flex-row items-center justify-evenly gap-x-16 py-2">
         <a href="/">
             <button class="text-gray-600 ">
                 <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto" width="24" height="24" viewBox="0 0 24 24"
@@ -12,30 +12,19 @@
             </button>
         </a>
 
-        {{-- Camera button --}}
-        <a href="" style="position: absolute; left: 50%; transform: translateX(-50%) translateY(-50%); ">
-            <button class="p-6 rounded-full bg-green-600">
-                <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31"
+        <a href="">
+            <button class="text-gray-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto" width="24" height="24" viewBox="0 0 21 21"
                     fill="none">
                     <path
-                        d="M12.9167 28.4167C8.04552 28.4167 5.60994 28.4167 4.09665 26.9034C2.58337 25.3902 2.58337 24.2461 2.58337 19.375"
-                        stroke="white" stroke-width="1.5" stroke-linecap="round" />
-                    <path
-                        d="M28.4167 19.375C28.4167 24.2461 28.4167 25.3902 26.9034 26.9034C25.3902 28.4167 22.9545 28.4167 18.0834 28.4167"
-                        stroke="white" stroke-width="1.5" stroke-linecap="round" />
-                    <path
-                        d="M18.0834 2.58331C22.9545 2.58331 25.3902 2.58331 26.9034 4.09659C28.4167 5.60988 28.4167 6.75379 28.4167 11.625"
-                        stroke="white" stroke-width="1.5" stroke-linecap="round" />
-                    <path
-                        d="M12.9167 2.58331C8.04552 2.58331 5.60994 2.58331 4.09665 4.09659C2.58337 5.60988 2.58337 6.75379 2.58337 11.625"
-                        stroke="white" stroke-width="1.5" stroke-linecap="round" />
-                    <path d="M2.58337 15.5H28.4167" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+                        d="M10 17.25C14.97 17.25 19 13.556 19 9C19 4.444 14.97 0.75 10 0.75C5.03 0.75 1 4.444 1 9C1 11.104 1.859 13.023 3.273 14.48C3.705 14.927 4.013 15.52 3.859 16.121C3.69037 16.7782 3.37478 17.3885 2.936 17.906C3.28714 17.9691 3.64324 18.0005 4 18C5.282 18 6.47 17.598 7.445 16.913C8.255 17.133 9.113 17.25 10 17.25Z"
+                        stroke="#3D3D3D" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
+                <small>Chatbot</small>
             </button>
         </a>
-        {{-- end of camera button --}}
 
-        <a href="">
+        <a href="/history">
             <button class="text-gray-600">
                 <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto" width="24" height="24"
                     viewBox="0 0 24 24" fill="none">
