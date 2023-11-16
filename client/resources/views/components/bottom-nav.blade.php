@@ -1,5 +1,5 @@
 <div class="fixed bottom-0 sm:w-[500px] w-full p-4 bg-white text-white border border-t mx-auto justify-center">
-    <div class=" flex flex-row items-center justify-evenly gap-x-12 py-2">
+    <div class=" flex flex-row items-center justify-evenly gap-x-44 py-2">
         <a href="/">
             <button class="text-gray-600 ">
                 <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto" width="24" height="24" viewBox="0 0 24 24"
@@ -12,8 +12,9 @@
             </button>
         </a>
 
-        <a href="">
-            <button class="p-4 rounded-full bg-green-600">
+        {{-- Camera button --}}
+        <a href="" style="position: absolute; left: 50%; transform: translateX(-50%) translateY(-50%); ">
+            <button class="p-6 rounded-full bg-green-600">
                 <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31"
                     fill="none">
                     <path
@@ -32,6 +33,7 @@
                 </svg>
             </button>
         </a>
+        {{-- end of camera button --}}
 
         <a href="">
             <button class="text-gray-600">
