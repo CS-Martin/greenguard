@@ -6,8 +6,6 @@
             <div class="position-relative px-6 py-24">
                 <div>
                     <x-history-card />
-                    asd
-
                 </div>
             </div>
         </div>

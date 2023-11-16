@@ -20,3 +20,11 @@ Route::get('/', function () {
 Route::get('/history', function () {
     return view('history');
 });
+
+Route::get('/chatbot', function () {
+    return view('chatbot');
+});
+
+Route::get('/prediction/{id}', function () {
+    return view('prediction');
+});
