@@ -7,9 +7,12 @@ This server is made with FastAPI.
 - [ ] Chatbot
 
 ## Installation
+Install required dependencies
 ```
 pip install -r requirements.txt
 ``` 
+Install model from Google Drive and plce into model/
+https://drive.google.com/file/d/1GR9f5Tkrg-Y9cmzfMvV2dc47xnyOgSsX/view?usp=sharing
 
 ## Usage
 To run the FastAPI server
