@@ -8,6 +8,7 @@
     <title>{{ config('Greengard', 'Greengard') }}</title>
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
 </head>
 
 <body class="bg-slate-100">
