@@ -24,13 +24,8 @@ class PredictionController extends Controller
         if ($response->successful()) {
             $result = $response->json();
 
-            // TO DO: Save image to storage
             // Save image to storage
-            // $image->store('storage/images/', $image->getClientOriginalName());
-
-            // Get image path
-            // $imagePath = 'storage/images/' . $image->getClientOriginalName();
-            $imagePath = 'Not working!';
+            $imagePath = $image->store('images');
 
             # Save prediction to database
             $request->user()->predictions()->create([
@@ -52,9 +47,12 @@ class PredictionController extends Controller
         # Get prediction
         $prediction = Prediction::find($id);
 
+        # Get image from storage
+        $image = Storage::get($prediction->image_blob);
+
         return view('prediction-result', [
             'result' => $prediction->result,
-            'imageBase64' => $prediction->image_blob
+            'image' => $image
         ]);
     }
 }
