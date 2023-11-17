@@ -15,22 +15,27 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
-
-Route::get('/history', function () {
-    return view('history');
-});
-
-Route::get('/chatbot', function () {
-    return view('chatbot');
-});
-
-Route::post('/prediction', [PredictionController::class, 'predict'])->name('prediction.post');
-Route::get('/prediction/{id}', [PredictionController::class, 'show'])->name('prediction');
-
+// Public routes
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginPost'])->name('login.post');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'registerPost'])->name('register.post');
+
+// Private routes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/', function () {
+        return view('dashboard');
+    });
+    
+    Route::get('/history', function () {
+        return view('history');
+    });
+    
+    Route::get('/chatbot', function () {
+        return view('chatbot');
+    });
+    
+    Route::post('/prediction', [PredictionController::class, 'predict'])->name('prediction.post');
+    Route::get('/prediction/{id}', [PredictionController::class, 'show'])->name('prediction');
+});    
