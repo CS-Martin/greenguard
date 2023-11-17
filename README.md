@@ -34,7 +34,7 @@ Greengard is an AI-driven mobile application designed to detect plant diseases f
     - Run client server
       ``` shell
       php artisan serve --host=0.0.0.0 --port=8000
-      npm run dev
+      npm run dev -- --host <ipaddress>
       ```
 - Backend
     - Installation required dependencies
