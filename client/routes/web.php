@@ -23,19 +23,26 @@ Route::post('/register', [AuthController::class, 'registerPost'])->name('registe
 
 // Private routes
 Route::middleware(['auth'])->group(function () {
+    // Logout
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    // Dashboard
     Route::get('/', function () {
         return view('dashboard');
     });
     
+    // History
     Route::get('/history', function () {
         return view('history');
     });
     
+    // Chatbot
     Route::get('/chatbot', function () {
         return view('chatbot');
     });
     
+    // Prediction
     Route::post('/prediction', [PredictionController::class, 'predict'])->name('prediction.post');
-    Route::get('/prediction/{id}', [PredictionController::class, 'show'])->name('prediction');
+    // Add middleware to protect this route from unauthorized access
+    Route::get('/prediction/{id}', [PredictionController::class, 'show'])->name('prediction')->middleware('authorize');
 });    
