@@ -7,7 +7,7 @@
                 <div class="pb-[1rem]">
                     <p class="font-bold pb-0">Make Prediction</p>
                     <small class="text-[#8A8A8A]">Insert a photo to predict its disease</small>
-                    <form action="{{ route('prediction-result') }}" method="POST" enctype="multipart/form-data" class="flex gap-3">
+                    <form action="{{ route('prediction.post') }}" method="POST" enctype="multipart/form-data" class="flex gap-3">
                         @csrf
                         <input
                             class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
@@ -27,7 +27,7 @@
 
                         </button>
                     </form> --}}
-                    <form id="cameraForm" action="{{ route('prediction-result') }}" method="POST"
+                    <form id="cameraForm" action="{{ route('prediction.post') }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
                         <button class="p-6 rounded-full bg-green-600 shadow-2xl" id="cameraButton" type="button">
