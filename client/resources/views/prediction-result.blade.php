@@ -5,8 +5,8 @@
             <x-header />
             <div class="position-relative px-6 py-24 h-[100vh]">
                 <div class="text-center pb-5 border-b">
-                    <img src="{{ asset('assets/dummy_prediction.png') }}" alt="This contains the image predicted"
-                        class="max-w-[18rem] mx-auto pb-3">
+                    <img src="data:image/jpeg;base64,{{ $imageBase64 }}" alt="This contains the image predicted"
+                        class="max-w-[18rem] mx-auto pb-3 rounded-lg ">
                     <small class="text-[#8A8A8A]">Disease Prediction:</small>
                     <h1 class=" font-bold text-2xl pt-1"> {{ $result['prediction'] ?? 'No prediction available' }}</h1>
                 </div>

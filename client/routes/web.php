@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PredictionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,8 @@ Route::get('/chatbot', function () {
     return view('chatbot');
 });
 
-Route::get('/prediction/{id}', function () {
-    return view('prediction');
-});
+// Route::get('/predict', function () {
+//     return view('predict');
+// });
+
+Route::post('/prediction-result', [PredictionController::class, 'predict'])->name('prediction-result');

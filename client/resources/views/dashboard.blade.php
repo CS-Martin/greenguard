@@ -4,6 +4,12 @@
         <x-header />
         <div class="position-relative px-6 py-24">
             <div>
+                <form action="{{ route('prediction-result') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="file" name="image" required>
+                    <button type="submit">Predict</button>
+                </form>
+
                 <x-history-card />
 
                 {{-- Camera floating button --}}

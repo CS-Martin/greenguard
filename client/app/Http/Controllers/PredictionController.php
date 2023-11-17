@@ -21,7 +21,11 @@ class PredictionController extends Controller
 
         if ($response->successful()) {
             $result = $response->json();
-            return view('prediction-result', ['result' => $result]);
+            $imageBase64 = base64_encode(file_get_contents($request->file('image')));
+            return view('prediction-result', [
+                'result' => $result,
+                'imageBase64' => $imageBase64
+            ]);
         } else {
             return back()->with('error', 'Sorry mayong laman AHAHAHA');
         }
