@@ -31,8 +31,7 @@
                     <path class="{{ request()->is('history') ? 'active' : '' }}"
                         d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
                         stroke="#3D3D3D" />
-                    <path class="{{ request()->is('history') ? 'active' : '' }}" d="M12 8V12L14.5 14.5" stroke="#3D3D3D"
-                        stroke-linecap="round" stroke-linejoin="round" />
+                    <path class="{{ request()->is('history') ? 'clock-active' : '' }}" d="M12 8V12L14.5 14.5" stroke="#3D3D3D" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
                 <small>History</small>
             </button>
@@ -44,5 +43,10 @@
     .active {
         color: #197243;
         stroke: #197243;
+        fill: #197243
+    }
+
+    .clock-active {
+        stroke: white
     }
 </style>

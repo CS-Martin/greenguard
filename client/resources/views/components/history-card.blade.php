@@ -8,7 +8,7 @@
         @for ($i = 0; $i < 20; $i++)
             <tr >
                 <a href="prediction/*">
-                    <div class="py-3 px-2 border-b hover:bg-gray-100">
+                    <div class="py-3  border-b hover:bg-gray-100">
                         <div>
                             <p>The Sliding Mr. Bones (Next Stop, Pottersville)</p>
                         </div>

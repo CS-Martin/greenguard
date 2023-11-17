@@ -8,8 +8,10 @@
 
                 {{-- Camera floating button --}}
                 <div class="fixed sm:w-[450px] text-right bottom-[16%]">
-                    <button class="p-6 rounded-full bg-green-600 shadow-2xl" onclick="openCamera()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31" fill="none">
+                    <button class="p-6 rounded-full bg-green-600 shadow-2xl" id="cameraButton">
+                        <input type="file" id="fileInput" capture="user" accept="image/*" style="display: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31"
+                            fill="none">
                             <path
                                 d="M12.9167 28.4167C8.04552 28.4167 5.60994 28.4167 4.09665 26.9034C2.58337 25.3902 2.58337 24.2461 2.58337 19.375"
                                 stroke="white" stroke-width="1.5" stroke-linecap="round" />
@@ -32,17 +34,10 @@
     </div>
     <x-bottom-nav />
     </div>
+
     <script>
-        function openCamera() {
-            navigator.mediaDevices.getUserMedia({
-                    video: true
-                })
-                .then(stream => {
-                    // Do something with the camera stream
-                })
-                .catch(error => {
-                    console.error('Error accessing camera:', error);
-                });
-        }
+        document.getElementById('cameraButton').addEventListener('click', function() {
+            document.getElementById('fileInput').click();
+        });
     </script>
 @endsection
