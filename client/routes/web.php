@@ -30,4 +30,8 @@ Route::get('/login', function () {
     return view('auth/login');
 });
 
+Route::get('/signup', function () {
+    return view('auth/signup');
+});
+
 Route::post('/prediction-result', [PredictionController::class, 'predict'])->name('prediction-result');
