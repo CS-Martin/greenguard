@@ -6,7 +6,7 @@
             <img src="{{ asset('assets/greengard_icon.svg') }}" alt="" class="mx-auto" width="200">
             <img src="{{ asset('assets/greengard_logo.png') }}" alt="" class="mx-auto my-5" width="100">
 
-            <form class="w-full" action="" method="POST">
+            <form class="w-full" method="POST" action="{{ route('login.post') }}">
                 @csrf
                 <div class="relative mb-6">
                     <input type="text" id="email" name="email" autocomplete="on"
@@ -41,7 +41,7 @@
                 </button>
                 <div class="flex flex-row gap-x-2">
                     <p>Don't have an account?</p>
-                    <a href="" class="text-[#1CB87E]">Create an account</a>
+                    <a href="{{ route('register') }}" class="text-[#1CB87E]">Create an account</a>
                 </div>
             </form>
         </div>
