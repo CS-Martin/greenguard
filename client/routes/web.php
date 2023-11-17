@@ -27,8 +27,8 @@ Route::get('/chatbot', function () {
     return view('chatbot');
 });
 
-Route::post('/prediction-result', [PredictionController::class, 'predict'])->name('prediction-result');
-
+Route::post('/prediction', [PredictionController::class, 'predict'])->name('prediction.post');
+Route::get('/prediction/{id}', [PredictionController::class, 'show'])->name('prediction');
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginPost'])->name('login.post');
