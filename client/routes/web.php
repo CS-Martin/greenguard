@@ -26,8 +26,8 @@ Route::get('/chatbot', function () {
     return view('chatbot');
 });
 
-// Route::get('/predict', function () {
-//     return view('predict');
-// });
+Route::get('/login', function () {
+    return view('auth/login');
+});
 
 Route::post('/prediction-result', [PredictionController::class, 'predict'])->name('prediction-result');
