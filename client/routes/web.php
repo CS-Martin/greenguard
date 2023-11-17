@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PredictionController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,12 +27,10 @@ Route::get('/chatbot', function () {
     return view('chatbot');
 });
 
-Route::get('/login', function () {
-    return view('auth/login');
-});
-
-Route::get('/signup', function () {
-    return view('auth/signup');
-});
-
 Route::post('/prediction-result', [PredictionController::class, 'predict'])->name('prediction-result');
+
+
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'loginPost'])->name('login.post');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'registerPost'])->name('register.post');

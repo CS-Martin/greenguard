@@ -4,11 +4,11 @@
     <div class="px-6 flex items-center justify-center h-screen">
         <div class="w-full">
             <p class="font-bold text-[#014A4E] text-2xl mb-6">Create An Account</p>
-            <form class="w-full" method="POST">
+            <form class="w-full" method="POST" action="{{ route('register.post') }}">
                 @csrf
                 <div class="flex flex-row gap-x-4 mb-6">
                     <div class="relative w-full">
-                        <input type="text" id="first-name" name="first-name" autocomplete="on"
+                        <input type="text" id="first_name" name="first_name" autocomplete="on"
                             class="block py-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" " />
                         <label for="floating_outlined"
@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="relative w-full">
-                    <input type="text" id="password" name="password" autocomplete="on"
+                    <input type="password" id="password" name="password" autocomplete="on"
                         class="block py-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" " />
                     <label for="floating_outlined"
@@ -50,7 +50,7 @@
                     Account</button>
                 <div class="flex flex-row gap-x-2">
                     <p>Alread have an account?</p>
-                    <a class="text-[#1CB87E]">Sign In</a>
+                    <a href="{{ route('login') }}"class="text-[#1CB87E]">Sign In</a>
                 </div>
             </form>
         </div>
