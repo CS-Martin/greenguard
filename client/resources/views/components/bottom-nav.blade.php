@@ -1,6 +1,6 @@
 <div class="fixed  bottom-0 sm:w-[500px] w-full p-4 bg-white text-white  border-t mx-auto justify-center">
     <div class=" flex flex-row items-center justify-evenly gap-x-16 py-2">
-        <a href="/">
+        <a href="{{ route('dashboard') }}">
             <button class="text-gray-600 {{ request()->is('/') ? 'active' : '' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto" width="24" height="24" viewBox="0 0 24 24"
                     fill="none">
@@ -24,7 +24,7 @@
             </button>
         </a>
 
-        <a href="/history">
+        <a href="{{ route('history') }}">
             <button class="text-gray-600  {{ request()->is('history') ? 'active' : '' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto" width="24" height="24"
                     viewBox="0 0 24 24" fill="none">
