@@ -12,7 +12,7 @@
             </button>
         </a>
 
-        <a href="/chat">
+        <a href=" {{ route('chat') }} ">
             <button class="text-gray-600  {{ request()->is('chat') ? 'active' : '' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto" width="24" height="24"
                     viewBox="0 0 21 21" fill="none">

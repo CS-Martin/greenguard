@@ -4,59 +4,12 @@
     <div>
         <x-header />
         <div>
+            {{-- chat body --}}
             <div class="position-relative px-6 py-24 h-screen" id="chat-container">
-                {{-- chat body --}}
-                <div>
-
-                    {{-- Bot response div hahaha --}}
-                    <div class="flex gap-x-4 items-start mb-6">
-                        {{-- This is bot profile --}}
-                        <div>
-                            <div
-                                class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-slate-800 rounded-full dark:bg-green-600">
-                                <span class="font-medium text-white dark:text-gray-300">GG</span>
-                            </div>
-                            <div class="relative">
-                                <span
-                                    class="bottom-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-white rounded-full"></span>
-                            </div>
-                        </div>
-
-                        {{-- This is bot response --}}
-                        <div class="flex min-w-0">
-                            <div class="inline-block bg-slate-800 p-3 rounded-lg break-words max-w-[80%] ">
-                                <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
-                                    laudantium reiciendis expedita
-                                    praesentium ab nemo itaque magnam facilis voluptate, soluta voluptates rerum possimus
-                                    aperiam modi vero debitis aspernatur, officia vel.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{--  --}}
-                    <div class="flex flex-row-reverse items-start gap-x-4 mb-6">
-                        <!-- User Avatar -->
-                        <div>
-                            <div
-                                class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden rounded-full border-2 border-green-400">
-                                <img src="{{ asset('assets/greengard_icon.svg') }}" alt="">
-                            </div>
-                            <div class="relative">
-                                <span
-                                    class="bottom-0 right-7 absolute w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-white rounded-full"></span>
-                            </div>
-                        </div>
-
-                        <!-- User Message -->
-                        <div class="flex-1 min-w-0 text-right">
-                            <div class="inline-block bg-green-500 text-gray-800 p-3 rounded-lg break-words max-w-[80%]">
-                                <p class="text-white">Albert!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                
             </div>
+
+            {{-- chat input --}}
             <div class="flex fixed bottom-[10%] sm:w-[500px] w-full p-4 bg-white text-white border-t gap-x-4">
                 <div class="relative basis-96">
                     <input type="text" id="message" name="message"
@@ -84,19 +37,13 @@
                 console.log('Button clicked');
                 var message = document.getElementById('message').value;
 
-                // Create div for message and response
-                var userMessage = document.createElement('div');
-                var botMessage = document.createElement('div');
+                var user = generateUserMessage(message);
+                var bot = generateBotResponse();
+                var botResponse = bot.querySelector('p');
 
                 // Attach the div to the chat container
-                document.getElementById('chat-container').appendChild(userMessage);
-                document.getElementById('chat-container').appendChild(botMessage);
-
-                // Add user message to div
-                userMessage.innerHTML = 'User: ' + message;
-
-                // Add bot message to div
-                botMessage.innerHTML = 'Bot: ';
+                document.getElementById('chat-container').appendChild(user);
+                document.getElementById('chat-container').appendChild(bot);
 
                 // Clear the input field
                 document.getElementById('message').value = '';
@@ -135,7 +82,7 @@
                                 // Process the received chunk as needed
 
                                 // Append the chunk to the placeholder element
-                                botMessage.innerHTML += jsonData.response;
+                                botResponse.textContent += jsonData.response;
 
                                 // Continue reading the stream
                                 return read();
@@ -148,6 +95,80 @@
                     .catch(error => {
                         console.error('Error:', error);
                     });
+
+                // Scroll to the bottom of the chat container
+                document.getElementById('chat-container').scrollTo({
+                    top: document.getElementById('chat-container').scrollHeight,
+                    behavior: 'smooth'
+                });
             });
+
+            function generateUserMessage(messageText) {
+                // Create the main container div
+                var containerDiv = document.createElement('div');
+                containerDiv.classList.add('flex', 'flex-row-reverse', 'items-start', 'gap-x-4', 'mb-6');
+
+                // Create the user avatar div
+                var userAvatarDiv = document.createElement('div');
+                userAvatarDiv.innerHTML = `
+                    <div class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden rounded-full border-2 border-green-400">
+                        <img src="{{ asset('assets/greengard_icon.svg') }}" alt="">
+                    </div>
+                    <div class="relative">
+                        <span class="bottom-0 right-7 absolute w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-white rounded-full"></span>
+                    </div>
+                `;
+                containerDiv.appendChild(userAvatarDiv);
+
+                // Create the user message div
+                var userMessageDiv = document.createElement('div');
+                userMessageDiv.classList.add('flex-1', 'min-w-0', 'text-right');
+
+                var messageContentDiv = document.createElement('div');
+                messageContentDiv.classList.add('inline-block', 'bg-green-500', 'text-gray-800', 'p-3', 'rounded-lg', 'break-words', 'max-w-[80%]');
+                messageContentDiv.innerHTML = `<p class="text-white">${messageText}</p>`;
+
+                userMessageDiv.appendChild(messageContentDiv);
+                containerDiv.appendChild(userMessageDiv);
+
+                // Append the generated HTML to the body or any other container
+                document.body.appendChild(containerDiv);
+
+                return containerDiv;
+            }
+
+            function generateBotResponse() {
+                // Create the main container div
+                var containerDiv = document.createElement('div');
+                containerDiv.classList.add('flex', 'gap-x-4', 'items-start', 'mb-6');
+
+                // Create the bot profile div
+                var botProfileDiv = document.createElement('div');
+                botProfileDiv.innerHTML = `
+                    <div class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-slate-800 rounded-full dark:bg-green-600">
+                        <span class="font-medium text-white dark:text-gray-300"></span>
+                    </div>
+                    <div class="relative">
+                        <span class="bottom-0 left-7 absolute w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-white rounded-full"></span>
+                    </div>
+                `;
+                containerDiv.appendChild(botProfileDiv);
+
+                // Create the bot response div
+                var botResponseDiv = document.createElement('div');
+                botResponseDiv.classList.add('flex', 'min-w-0');
+
+                var responseContentDiv = document.createElement('div');
+                responseContentDiv.classList.add('inline-block', 'bg-slate-800', 'p-3', 'rounded-lg', 'break-words', 'max-w-[80%]');
+                responseContentDiv.innerHTML = `<p class="text-white" id="bot-response"></p>`;
+
+                botResponseDiv.appendChild(responseContentDiv);
+                containerDiv.appendChild(botResponseDiv);
+
+                // Append the generated HTML to the body or any other container
+                document.body.appendChild(containerDiv);
+
+                return containerDiv;
+            }
         </script>
     @endsection
