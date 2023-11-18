@@ -55,4 +55,34 @@ class PredictionController extends Controller
             'image' => $image
         ]);
     }
+
+    public function delete(Request $request)
+    {
+        # Get prediction
+        $prediction = $request->user()->predictions()->find($request->route('id'));
+
+        # Delete image from storage
+        Storage::delete($prediction->image_blob);
+
+        # Delete prediction from database
+        $prediction->delete();
+
+        return back();
+    }
+
+    public function deleteAll(Request $request)
+    {
+        # Get user predictions
+        $predictions = $request->user()->predictions()->get();
+
+        # Delete images from storage
+        foreach ($predictions as $prediction) {
+            Storage::delete($prediction->image_blob);
+        }
+
+        # Delete predictions from database
+        $request->user()->predictions()->delete();
+
+        return back();
+    }
 }

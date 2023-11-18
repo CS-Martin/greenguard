@@ -27,6 +27,15 @@
                     </div>
                 @endif
 
+                {{-- Add delete all button --}}
+                <div class="flex justify-end">
+                    <form action="{{ route('prediction.delete.all') }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="text-red-500">Delete All</button>
+                    </form>
+                </div>
+
                 @foreach ($predictions as $prediction)
                     <x-history-card :prediction="$prediction" />
                 @endforeach
