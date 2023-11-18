@@ -30,19 +30,26 @@ Route::middleware(['auth'])->group(function () {
 
     // Dashboard
     Route::get('/', [DashboardController::class, 'show'])->name('dashboard');
-    
+
     // History
     Route::get('/history', [HistoryController::class, 'show'])->name('history');
-    
+
     // Chatbot
     Route::get('/chatbot', function () {
         return view('chatbot');
     });
-    
+
+    // Profile
+    Route::get('/profile', function () {
+        return view('profile');
+    });
+
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
     // Prediction
     Route::post('/prediction', [PredictionController::class, 'predict'])->name('prediction.post');
     // Add middleware to protect this route from unauthorized access
     Route::get('/prediction/{id}', [PredictionController::class, 'show'])->name('prediction')->middleware('authorize');
     Route::delete('/prediction/{id}', [PredictionController::class, 'delete'])->name('prediction.delete');
     Route::delete('/prediction', [PredictionController::class, 'deleteAll'])->name('prediction.delete.all');
-});    
+});
