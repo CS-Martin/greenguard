@@ -4,6 +4,9 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from model.model import predict_image
 
+import os
+import json
+
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
@@ -42,3 +45,36 @@ async def predict(request: dict):
     
     # Return the prediction as JSON object
     return JSONResponse(content={"prediction": prediction})
+
+@app.get("/api/disease/{disease}")
+async def get_disease(disease: str):
+    """
+    Accepts a disease name and returns a description of the disease and the recommended treatment in JSON format
+    """
+    try:
+        information = get_disease_description(disease)
+        if information is None:
+            raise HTTPException(status_code=404, detail="Disease not found")
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Disease not found")
+    
+    # Return the prediction as JSON object
+    return JSONResponse(content={"information": information})
+
+def get_disease_description(disease):
+    """
+    Accepts a disease name and returns a description of the disease and the recommended treatment
+    """
+
+    # Load json file which contains the disease descriptions
+    data_path = os.path.join(os.path.dirname(__file__), 'data', 'plant_disease.json')
+    with open(data_path, 'r') as f:
+        data = json.load(f)
+
+    # Get the disease description from the json file
+    for _disease in data:
+        if disease in _disease:
+            return _disease[disease]
+        
+    return None
