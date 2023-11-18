@@ -1,25 +1,17 @@
 <table class="table-auto">
-    @if (request()->is('/'))
-        <div>
-            <p class="font-bold">Recent Detections</p>
-        </div>
-    @endif
     <tbody>
-        @for ($i = 0; $i < 20; $i++)
             <tr >
-                <a href="prediction/*">
+                <a href="{{ route('prediction', ['id' => $prediction->id]) }}">
                     <div class="py-3  border-b hover:bg-gray-100">
                         <div>
-                            <p>The Sliding Mr. Bones (Next Stop, Pottersville)</p>
+                            <p> {{ $prediction->result }} </p>
                         </div>
-
                         <div class="flex justify-between">
-                            <small class="text-[#8A8A8A]">August 28, 2023</small>
-                            <small class="text-right text-[#8A8A8A]">10:59 PM</small>
+                            <small class="text-[#8A8A8A]"> {{ $prediction->created_at->format('M d, Y') }} </small>
+                            <small class="text-right text-[#8A8A8A]"> {{ $prediction->created_at->format('g:i A') }} </small>
                         </div>
                     </div>
                 </a>
             </tr>
-            @endfor
     </tbody>
 </table>
