@@ -12,21 +12,25 @@
                         @csrf
                         <input
                             class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                            name="image" type="file" required>
+                            name="image" id="image" type="file" required>
+                        @error('image')
+                            <p>{{ $message }}</p>
+                        @enderror
                         <button type="submit" class=" bg-green-500 p-2 px-5 text-white rounded-md">Predict</button>
 
                     </form>
                 </div>
 
                 <div class="mb-2">
-                    <p class="font-bold">Recent Detections</p>
+                    <p class="font-bold">Detection History</p>
                 </div>
 
                 @if ($predictions->count() <= 0)
                     <div class="bg-gray-100 w-full rounded-lg p-4  text-center">
-                        <p class=" text-[#8A8A8A]">No Recent Detections</p>
+                        <p class=" text-[#8A8A8A]">No Detection History</p>
                     </div>
                 @endif
+
 
                 {{-- Prediction cards --}}
                 @foreach ($predictions as $prediction)

@@ -4,20 +4,60 @@
     <div>
         <x-header />
         <div>
-            <div class="position-relative px-6 py-24 h-[100vh]" id="chat-container">
+            <div class="position-relative px-6 py-24 h-screen" id="chat-container">
+                {{-- chat body --}}
                 <div>
-                    <div
-                        class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-green-500 rounded-full dark:bg-green-600">
-                        <span class="font-medium text-white dark:text-gray-300">GG</span>
+
+                    {{-- Bot response div hahaha --}}
+                    <div class="flex gap-x-4 items-start mb-6">
+                        {{-- This is bot profile --}}
+                        <div>
+                            <div
+                                class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-slate-800 rounded-full dark:bg-green-600">
+                                <span class="font-medium text-white dark:text-gray-300">GG</span>
+                            </div>
+                            <div class="relative">
+                                <span
+                                    class="bottom-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-white rounded-full"></span>
+                            </div>
+                        </div>
+
+                        {{-- This is bot response --}}
+                        <div class="flex min-w-0">
+                            <div class="inline-block bg-slate-800 p-3 rounded-lg break-words max-w-[80%] ">
+                                <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
+                                    laudantium reiciendis expedita
+                                    praesentium ab nemo itaque magnam facilis voluptate, soluta voluptates rerum possimus
+                                    aperiam modi vero debitis aspernatur, officia vel.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="relative">
-                        <span
-                            class="bottom-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-white rounded-full"></span>
+
+                    {{--  --}}
+                    <div class="flex flex-row-reverse items-start gap-x-4 mb-6">
+                        <!-- User Avatar -->
+                        <div>
+                            <div
+                                class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden rounded-full border-2 border-green-400">
+                                <img src="{{ asset('assets/greengard_icon.svg') }}" alt="">
+                            </div>
+                            <div class="relative">
+                                <span
+                                    class="bottom-0 right-7 absolute w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-white rounded-full"></span>
+                            </div>
+                        </div>
+
+                        <!-- User Message -->
+                        <div class="flex-1 min-w-0 text-right">
+                            <div class="inline-block bg-green-500 text-gray-800 p-3 rounded-lg break-words max-w-[80%]">
+                                <p class="text-white">Albert!</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="flex flex-row fixed bottom-[10%] sm:w-[500px] w-full p-4 bg-white text-white border-t gap-x-4">
+            </div>
+            <div class="flex fixed bottom-[10%] sm:w-[500px] w-full p-4 bg-white text-white border-t gap-x-4">
                 <div class="relative basis-96">
                     <input type="text" id="message" name="message"
                         class="block px-2.5 pb-2.5 pt-4 w-[100%] text-sm text-black bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-400 focus:outline-none focus:ring-0 focus:border-green-400 peer"
@@ -36,76 +76,78 @@
                     </button>
                 </div>
             </div>
+            <x-bottom-nav />
         </div>
-        <x-bottom-nav />
-    </div>
 
-    <script>
-        document.getElementById('submitBtn').addEventListener('click', function () {
-            console.log('Button clicked');
-            var message = document.getElementById('message').value;
+        <script>
+            document.getElementById('submitBtn').addEventListener('click', function() {
+                console.log('Button clicked');
+                var message = document.getElementById('message').value;
 
-            // Create div for message and response
-            var userMessage = document.createElement('div');
-            var botMessage = document.createElement('div');
+                // Create div for message and response
+                var userMessage = document.createElement('div');
+                var botMessage = document.createElement('div');
 
-            // Attach the div to the chat container
-            document.getElementById('chat-container').appendChild(userMessage);
-            document.getElementById('chat-container').appendChild(botMessage);
+                // Attach the div to the chat container
+                document.getElementById('chat-container').appendChild(userMessage);
+                document.getElementById('chat-container').appendChild(botMessage);
 
-            // Add user message to div
-            userMessage.innerHTML = 'User: ' + message;
+                // Add user message to div
+                userMessage.innerHTML = 'User: ' + message;
 
-            // Add bot message to div
-            botMessage.innerHTML = 'Bot: ';
+                // Add bot message to div
+                botMessage.innerHTML = 'Bot: ';
 
-            // Clear the input field
-            document.getElementById('message').value = '';
+                // Clear the input field
+                document.getElementById('message').value = '';
 
-            // Make a POST request
-            fetch('http://localhost:11434/api/generate', {
-                method: 'POST',
-                body: JSON.stringify({
-                    model: 'orca-mini',
-                    prompt: message,
+                // Make a POST request
+                fetch('http://localhost:11434/api/generate', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            model: 'orca-mini',
+                            prompt: message,
 
-                }),
-            })
-            .then(response => response.body)
-            .then(body => {
-                const reader = body.getReader();
+                        }),
+                    })
+                    .then(response => response.body)
+                    .then(body => {
+                        const reader = body.getReader();
 
-                console.log('Reading stream...');
+                        console.log('Reading stream...');
 
-                // Read the stream
-                function read() {
-                    return reader.read().then(({ value, done }) => {
-                        if (done) {
-                            console.log('Stream complete');
-                            return;
+                        // Read the stream
+                        function read() {
+                            return reader.read().then(({
+                                value,
+                                done
+                            }) => {
+                                if (done) {
+                                    console.log('Stream complete');
+                                    return;
+                                }
+
+                                // Assuming value is a Uint8Array containing JSON data
+                                const jsonString = new TextDecoder().decode(value);
+                                const jsonData = JSON.parse(jsonString);
+
+                                console.log('Received chunk:', jsonData);
+                                // Process the received chunk as needed
+
+                                // Append the chunk to the placeholder element
+                                botMessage.innerHTML += jsonData.response;
+
+                                // Continue reading the stream
+                                return read();
+                            });
                         }
 
-                        // Assuming value is a Uint8Array containing JSON data
-                        const jsonString = new TextDecoder().decode(value);
-                        const jsonData = JSON.parse(jsonString);
-
-                        console.log('Received chunk:', jsonData);
-                        // Process the received chunk as needed
-
-                        // Append the chunk to the placeholder element
-                        botMessage.innerHTML += jsonData.response;
-
-                        // Continue reading the stream
-                        return read();
+                        // Start reading the stream
+                        read();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
                     });
-                }
-
-                // Start reading the stream
-                read();
-            })
-            .catch(error => {
-                console.error('Error:', error);
             });
-        });
-    </script>
-@endsection
+        </script>
+    @endsection
