@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
-class Chat extends Controller
+class ChatController extends Controller
 {
-    public function index()
+    public function show()
     {
         return view('chat');
     }
@@ -41,26 +41,26 @@ class Chat extends Controller
     //     return $response;
     // }
     
-    public function send(Request $request)
-    {
-        $message = $request->input('message');
+    // public function send(Request $request)
+    // {
+    //     $message = $request->input('message');
 
-        // Create a stream response
-        return response()->stream(function () use ($message) {
-            // Make the API call and get the stream
-            $stream = Http::post('http://localhost:11434/api/generate', [
-                'model' => 'orca-mini',
-                'prompt' => $message
-            ])->getBody()->detach();
+    //     // Create a stream response
+    //     return response()->stream(function () use ($message) {
+    //         // Make the API call and get the stream
+    //         $stream = Http::post('http://localhost:11434/api/generate', [
+    //             'model' => 'orca-mini',
+    //             'prompt' => $message
+    //         ])->getBody()->detach();
             
-            // Output the stream directly to the response
-            fpassthru($stream);
+    //         // Output the stream directly to the response
+    //         fpassthru($stream);
 
-            // Close the stream to release the resources
-            fclose($stream);
-            }, 200, [
-            'Content-Type' => 'application/octet-stream'
-        ]);
-    }
+    //         // Close the stream to release the resources
+    //         fclose($stream);
+    //         }, 200, [
+    //         'Content-Type' => 'application/octet-stream'
+    //     ]);
+    // }
 
 }
