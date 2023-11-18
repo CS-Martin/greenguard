@@ -55,4 +55,18 @@ class PredictionController extends Controller
             'image' => $image
         ]);
     }
+
+    public function delete(Request $request)
+    {
+        # Get prediction
+        $prediction = Prediction::find($request->id);
+
+        # Delete image from storage
+        Storage::delete($prediction->image_blob);
+
+        # Delete prediction from database
+        $prediction->delete();
+
+        return redirect()->route('history');
+    }
 }

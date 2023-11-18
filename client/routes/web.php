@@ -43,4 +43,5 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/prediction', [PredictionController::class, 'predict'])->name('prediction.post');
     // Add middleware to protect this route from unauthorized access
     Route::get('/prediction/{id}', [PredictionController::class, 'show'])->name('prediction')->middleware('authorize');
+    Route::delete('/prediction/{id}', [PredictionController::class, 'delete'])->name('prediction.delete')->middleware('authorize');
 });    
