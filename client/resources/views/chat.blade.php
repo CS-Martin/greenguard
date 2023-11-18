@@ -4,7 +4,7 @@
     <div>
         <x-header />
         <div>
-            <div class="position-relative px-6 py-24 h-[100vh]">
+            <div class="position-relative px-6 py-24 h-[100vh]" id="chat-container">
                 <div>
                     <div
                         class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-green-500 rounded-full dark:bg-green-600">
@@ -15,8 +15,8 @@
                             class="bottom-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-white rounded-full"></span>
                     </div>
                 </div>
-
             </div>
+
             <div class="flex flex-row fixed bottom-[10%] sm:w-[500px] w-full p-4 bg-white text-white border-t gap-x-4">
                 <div class="relative basis-96">
                     <input type="text" id="message" name="message"
@@ -45,17 +45,37 @@
             console.log('Button clicked');
             var message = document.getElementById('message').value;
 
+            // Create div for message and response
+            var userMessage = document.createElement('div');
+            var botMessage = document.createElement('div');
+
+            // Attach the div to the chat container
+            document.getElementById('chat-container').appendChild(userMessage);
+            document.getElementById('chat-container').appendChild(botMessage);
+
+            // Add user message to div
+            userMessage.innerHTML = 'User: ' + message;
+
+            // Add bot message to div
+            botMessage.innerHTML = 'Bot: ';
+
+            // Clear the input field
+            document.getElementById('message').value = '';
+
             // Make a POST request
             fetch('http://localhost:11434/api/generate', {
                 method: 'POST',
                 body: JSON.stringify({
                     model: 'orca-mini',
                     prompt: message,
+
                 }),
             })
             .then(response => response.body)
             .then(body => {
                 const reader = body.getReader();
+
+                console.log('Reading stream...');
 
                 // Read the stream
                 function read() {
@@ -64,8 +84,16 @@
                             console.log('Stream complete');
                             return;
                         }
-                        console.log('Received chunk:', value);
+
+                        // Assuming value is a Uint8Array containing JSON data
+                        const jsonString = new TextDecoder().decode(value);
+                        const jsonData = JSON.parse(jsonString);
+
+                        console.log('Received chunk:', jsonData);
                         // Process the received chunk as needed
+
+                        // Append the chunk to the placeholder element
+                        botMessage.innerHTML += jsonData.response;
 
                         // Continue reading the stream
                         return read();

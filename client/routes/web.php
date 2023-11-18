@@ -5,6 +5,7 @@ use App\Http\Controllers\PredictionController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ChatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,9 +36,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/history', [HistoryController::class, 'show'])->name('history');
 
     // Chatbot
-    Route::get('/chatbot', function () {
-        return view('chatbot');
-    });
+    Route::get('/chat', [ChatController::class, 'show'])->name('chat');
 
     // Profile
     Route::get('/profile', function () {
