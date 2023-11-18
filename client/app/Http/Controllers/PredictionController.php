@@ -50,9 +50,13 @@ class PredictionController extends Controller
         # Get image from storage
         $image = Storage::get($prediction->image_blob);
 
+        # Get information about the disease
+        $disease = Http::get('http://localhost:3000/api/disease/' . $prediction->result)->json();
+
         return view('prediction-result', [
             'result' => $prediction->result,
-            'image' => $image
+            'image' => $image,
+            'information' => $disease['information']
         ]);
     }
 

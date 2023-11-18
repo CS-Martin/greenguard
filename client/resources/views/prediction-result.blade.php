@@ -22,6 +22,12 @@
                             <small>Add to History</small>
                         </button>
                     </div>
+                    <div> {{ $information['plant'] }} </div>
+                    <div> {{ $information['description'] }} </div>
+                    <div> {{ $information['disease'] }} </div>
+                    <div> {{ $information['disease_description'] }} </div>
+                    {{-- Disease treatment format varies, proceed with caution --}}
+                    <div> {{ $information['treatment'] }} </div>
                 </div>
             </div>
         </div>
