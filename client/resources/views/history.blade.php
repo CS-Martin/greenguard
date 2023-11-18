@@ -3,9 +3,11 @@
     <div>
         <div>
             <x-header />
-            <div class="position-relative px-6 py-24">
+            <div class="position-relative h-screen px-6 py-24">
                 <div>
-                    <x-history-card />
+                    @foreach ($predictions as $prediction)
+                        <x-history-card :prediction="$prediction" />
+                    @endforeach
                 </div>
             </div>
         </div>

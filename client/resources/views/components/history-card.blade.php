@@ -1,25 +1,34 @@
 <table class="table-auto">
-    @if (request()->is('/'))
-        <div>
-            <p class="font-bold">Recent Detections</p>
-        </div>
-    @endif
+    <div class="flex justify-end">
+        <form action="{{ route('prediction.delete.all') }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="text-red-500">Delete All</button>
+        </form>
+    </div>
     <tbody>
-        @for ($i = 0; $i < 20; $i++)
-            <tr >
-                <a href="prediction/*">
-                    <div class="py-3  border-b hover:bg-gray-100">
-                        <div>
-                            <p>The Sliding Mr. Bones (Next Stop, Pottersville)</p>
-                        </div>
-
-                        <div class="flex justify-between">
-                            <small class="text-[#8A8A8A]">August 28, 2023</small>
-                            <small class="text-right text-[#8A8A8A]">10:59 PM</small>
-                        </div>
+        <tr>
+            <a href="{{ route('prediction', ['id' => $prediction->id]) }}">
+                <div class="py-3  border-b hover:bg-gray-100">
+                    <div>
+                        <p> {{ $prediction->result }} </p>
                     </div>
-                </a>
-            </tr>
-            @endfor
+                    <div class="flex justify-between">
+                        <small class="text-[#8A8A8A]"> {{ $prediction->created_at->format('M d, Y') }} </small>
+                        <small class="text-right text-[#8A8A8A]"> {{ $prediction->created_at->format('g:i A') }}
+                        </small>
+                    </div>
+
+                    {{-- Add delete button --}}
+                    <div class="flex justify-end">
+                        <form action="{{ route('prediction.delete', ['id' => $prediction->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="text-red-500">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </a>
+        </tr>
     </tbody>
 </table>
