@@ -48,7 +48,7 @@ class AuthController extends Controller
 
         if (!$user) {
             dd('Error creating user');
-        } 
+        }
 
         return redirect()->route('login')->with('success', 'Account created successfully');
     }
