@@ -18,21 +18,21 @@
                     </form>
                 </div>
 
-                @if ($predictions->count() > 0)
-                    <div>
-                        <p class="font-bold">Recent Detections</p>
-                    </div>
-                @else
-                    <div>
-                        <p class="font-bold">No Recent Detections</p>
+                <div class="mb-2">
+                    <p class="font-bold">Recent Detections</p>
+                </div>
+
+                @if ($predictions->count() <= 0)
+                    <div class="bg-gray-200 w-full rounded-lg p-4  text-center">
+                        <p class=" text-[#8A8A8A]">No Recent Detections</p>
                     </div>
                 @endif
 
-
-
+                {{-- Prediction cards --}}
                 @foreach ($predictions as $prediction)
                     <x-history-card :prediction="$prediction" />
                 @endforeach
+
                 <div class="fixed sm:w-[450px] text-right bottom-[16%]">
                     <form id="cameraForm" action="{{ route('prediction.post') }}" method="POST"
                         enctype="multipart/form-data">
@@ -61,8 +61,8 @@
                 </div>
             </div>
         </div>
+        <x-bottom-nav />
     </div>
-    <x-bottom-nav />
     </div>
 
     <style scoped>
