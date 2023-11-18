@@ -23,7 +23,7 @@
                 </div>
 
                 @if ($predictions->count() <= 0)
-                    <div class="bg-gray-200 w-full rounded-lg p-4  text-center">
+                    <div class="bg-gray-100 w-full rounded-lg p-4  text-center">
                         <p class=" text-[#8A8A8A]">No Recent Detections</p>
                     </div>
                 @endif
