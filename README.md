@@ -29,7 +29,7 @@ Greengard is an AI-driven mobile application designed to detect plant diseases f
     - Install client dependencies
       ``` shell
       npm install
-      composer update
+      composer install
       ```
     - Run client server
       ``` shell
