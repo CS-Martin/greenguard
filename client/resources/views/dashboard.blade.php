@@ -17,8 +17,19 @@
                     </form>
                 </div>
 
-                <x-history-card />
+                @if ($predictions->count() > 0)
+                    <div>
+                        <p class="font-bold">Recent Detections</p>
+                    </div>
+                @else
+                    <div>
+                        <p class="font-bold">No Recent Detections</p>
+                    </div>
+                @endif
 
+                @foreach ($predictions as $prediction)
+                    <x-history-card :prediction="$prediction" />
+                @endforeach
                 {{-- Camera floating button --}}
                 <div class="fixed sm:w-[450px] text-right bottom-[16%]">
                     {{-- <form action="{{ route('prediction-result') }}" method="POST" enctype="multipart/form-data">

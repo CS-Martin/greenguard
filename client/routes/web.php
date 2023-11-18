@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PredictionController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,14 +29,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
     // Dashboard
-    Route::get('/', function () {
-        return view('dashboard');
-    });
+    Route::get('/', [DashboardController::class, 'show'])->name('dashboard');
     
     // History
-    Route::get('/history', function () {
-        return view('history');
-    });
+    Route::get('/history', [HistoryController::class, 'show'])->name('history');
     
     // Chatbot
     Route::get('/chatbot', function () {
