@@ -1,5 +1,5 @@
-<table class="table-auto">
 
+<table class="table-auto">
     <tbody>
         <tr>
             <div class="relative">
@@ -18,17 +18,13 @@
                         <div class="flex justify-between mb-3">
                             <p class="font-semibold"> {{ $prediction->result }} </p>
                         </div>
-
                         <div class="flex justify-between">
                             <small class="text-[#8A8A8A]"> {{ $prediction->created_at->format('M d, Y') }} </small>
                             <small class="text-right text-[#8A8A8A]"> {{ $prediction->created_at->format('g:i A') }}
                             </small>
                         </div>
-
-
                     </div>
                 </a>
-
             </div>
         </tr>
     </tbody>
@@ -77,4 +73,8 @@
             </div>
         </div>
     </div>
-</div>
+    @if ($prediction->count() <= 0)
+        <div class="bg-gray-100 w-full rounded-lg p-4  text-center">
+            <p class=" text-[#8A8A8A]">No Detection History</p>
+        </div>
+    @endif
