@@ -65,9 +65,9 @@
                 </div>
             </div>
         </div>
-        <x-bottom-nav />
     </div>
-    </div>
+    <x-bottom-nav />
+</div>
 
     <style scoped>
         input#file-upload-button {

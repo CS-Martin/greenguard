@@ -3,7 +3,7 @@
     <div>
         <div>
             <x-header />
-            <div class="position-relative px-6 py-24 h-[100vh]">
+            <div class="position-relative px-6 py-24 h-[100%]">
                 <div class="text-center pb-5 border-b">
                     <img src="data:image/jpeg;base64,{{ base64_encode($image) }}" alt="This contains the image predicted"
                         class="max-w-[18rem] mx-auto pb-3 rounded-lg ">
@@ -22,12 +22,25 @@
                             <small>Add to History</small>
                         </button>
                     </div>
-                    <div> {{ $information['plant'] }} </div>
-                    <div> {{ $information['description'] }} </div>
-                    <div> {{ $information['disease'] }} </div>
-                    <div> {{ $information['disease_description'] }} </div>
-                    {{-- Disease treatment format varies, proceed with caution --}}
-                    <div> {{ $information['treatment'] }} </div>
+                </div>
+
+
+                <div>
+                    <div class="mb-2">
+                        <p class="mb-2"><span class="font-bold">Plant: </span>{{ $information['plant'] }} </p>
+                        <p class="font-bold">Plant description:</p>
+                        <p> {{ $information['description'] }} </p>
+                    </div>
+
+                    <div class="mb-2">
+                        <p class="font-bold">Disease description:</p>
+                        <p>{{ $information['disease_description'] }}</p>
+                    </div>
+
+                    <div>
+                        <p class="font-bold">Treatment:</p>
+                        <p>{{ $information['treatment'] }}</p>
+                    </div>
                 </div>
             </div>
         </div>
