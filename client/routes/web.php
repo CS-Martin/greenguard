@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\WeatherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,4 +52,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/prediction/{id}', [PredictionController::class, 'show'])->name('prediction')->middleware('authorize');
     Route::delete('/prediction/{id}', [PredictionController::class, 'delete'])->name('prediction.delete');
     Route::delete('/prediction', [PredictionController::class, 'deleteAll'])->name('prediction.delete.all');
+
+    // Weather
+    Route::get('/weather', [WeatherController::class, 'getWeather'])->name('getWeather');
 });
