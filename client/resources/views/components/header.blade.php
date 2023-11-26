@@ -1,4 +1,4 @@
-<div class="fixed top-0 sm:w-[500px] px-6 flex bg-white items-center justify-between h-[65px] w-full mx-auto border-b mb-6 z-10">
+<div class="fixed top-0 sm:w-[500px] px-6 flex bg-white items-center justify-between h-[65px] w-full mx-auto border-b mb-6 z">
     <div class="flex gap-x-3 font-bold">
         @if (request()->is('history') || request()->is('prediction/*') || request()->is('chatbot') || request()->is('profile') || request()->is('chat'))
             <a href="{{ url()->previous() }}">
@@ -26,7 +26,7 @@
         @endif
     </div>
 
-    {{-- <div>
+    <div>
         @if (request()->is('history'))
             <div class="flex justify-end">
                 <form action="{{ route('prediction.delete.all') }}" method="POST">
@@ -34,8 +34,9 @@
                     @method('DELETE')
                     <button type="submit" class="text-red-500">Delete All</button>
                 </form>
+            </div>
         @endif
-    </div> --}}
+    </div>
 
     @if (!request()->is('history'))
     <a href="/profile">
