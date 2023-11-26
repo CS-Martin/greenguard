@@ -2,11 +2,10 @@
 
 @section('content')
     <div>
-        <x-header />
         <div>
             {{-- chat body --}}
             <div class="position-relative px-6 py-24 h-screen" id="chat-container">
-                
+
             </div>
 
             {{-- chat input --}}
@@ -29,7 +28,6 @@
                     </button>
                 </div>
             </div>
-            <x-bottom-nav />
         </div>
 
         <script>
@@ -125,7 +123,8 @@
                 userMessageDiv.classList.add('flex-1', 'min-w-0', 'text-right');
 
                 var messageContentDiv = document.createElement('div');
-                messageContentDiv.classList.add('inline-block', 'bg-green-500', 'text-gray-800', 'p-3', 'rounded-lg', 'break-words', 'max-w-[80%]');
+                messageContentDiv.classList.add('inline-block', 'bg-green-500', 'text-gray-800', 'p-3', 'rounded-lg',
+                    'break-words', 'max-w-[80%]');
                 messageContentDiv.innerHTML = `<p class="text-white">${messageText}</p>`;
 
                 userMessageDiv.appendChild(messageContentDiv);
@@ -159,7 +158,8 @@
                 botResponseDiv.classList.add('flex', 'min-w-0');
 
                 var responseContentDiv = document.createElement('div');
-                responseContentDiv.classList.add('inline-block', 'bg-slate-800', 'p-3', 'rounded-lg', 'break-words', 'max-w-[80%]');
+                responseContentDiv.classList.add('inline-block', 'bg-slate-800', 'p-3', 'rounded-lg', 'break-words',
+                    'max-w-[80%]');
                 responseContentDiv.innerHTML = `<p class="text-white" id="bot-response"></p>`;
 
                 botResponseDiv.appendChild(responseContentDiv);

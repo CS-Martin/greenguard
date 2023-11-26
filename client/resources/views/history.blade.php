@@ -2,8 +2,7 @@
 @section('content')
     <div>
         <div>
-            <x-header />
-            <div class="position-relative h-screen px-6 py-24">
+            <div class="position-relative h-[100%] px-6 pb-30 py-24">
                 <div>
                     @forelse ($predictions as $prediction)
                         <x-history-card :prediction="$prediction" />
@@ -15,6 +14,5 @@
                 </div>
             </div>
         </div>
-        <x-bottom-nav />
     </div>
 @endsection
