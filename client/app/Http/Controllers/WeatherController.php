@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Http;
 use Stevebauman\Location\Facades\Location;
 
 class WeatherController extends Controller
-{   
+{
     public function convertWeatherCode($code)
     {
         $dictionary = [
@@ -41,8 +41,8 @@ class WeatherController extends Controller
             99 => 'Thunderstorm with slight and heavy hail',
         ];
         $codeDescription = array();
-        foreach($code as $i){
-            $codeDescription[] = $dictionary[$i]; 
+        foreach ($code as $i) {
+            $codeDescription[] = $dictionary[$i];
         }
         return $codeDescription;
     }
@@ -50,8 +50,8 @@ class WeatherController extends Controller
     public function getLocation(float $latitude, float $longitude)
     {
         $response = Http::get("https://api.bigdatacloud.net/data/reverse-geocode-client?latitude={$latitude}&longitude={$longitude}");
-        
-        if ($response->failed()){
+
+        if ($response->failed()) {
             return str("Failed to retrieve name of current location");
         }
         $responseData = $response->json();
@@ -62,16 +62,15 @@ class WeatherController extends Controller
 
     public function getWeather()
     {
-        $days = 1; 
+        $days = 1;
         //$ip = '49.35.41.195'; //For static IP address get
         $ip = request()->ip(); //Dynamic IP address get
-        $data = Location::get($ip); 
+        $data = Location::get($ip);
 
-        if($data == false){ //If location can't be taken from IP, defaults to Naga City Hall
+        if ($data == false) { //If location can't be taken from IP, defaults to Naga City Hall
             $longitude = 123.198;
-            $latitude = 13.626;  
-        } 
-        else{
+            $latitude = 13.626;
+        } else {
             $longitude = $data->longitude;
             $latitude = $data->latitude;
         }
@@ -82,7 +81,7 @@ class WeatherController extends Controller
             'forecast_days' => $days,
             'hourly' => ["weather_code", "temperature_2m", "wind_speed_10m", "relative_humidity_2m", "cloud_cover"],
         ]);
-        if ($response->failed()){
+        if ($response->failed()) {
             return str("Failed to retrieve weather data");
         }
         $responseData = $response->json();
@@ -96,9 +95,9 @@ class WeatherController extends Controller
 
         return (
             compact(
-                'location', 
-                'temperature',  
-                'humidity', 
+                'location',
+                'temperature',
+                'humidity',
                 'weather',
                 'clouds'
             )

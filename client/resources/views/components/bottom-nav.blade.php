@@ -1,10 +1,10 @@
 <div class="fixed bottom-0 sm:w-[500px] w-full p-4 bg-white text-white  border-t mx-auto justify-center">
     <div class=" flex flex-row items-center justify-evenly gap-x-16 py-2">
-        <a href="{{ route('dashboard') }}">
-            <button class="text-gray-600 {{ request()->is('/') ? 'active' : '' }}">
+        <a href="{{ route('dashboard.show') }}">
+            <button class="text-gray-600 {{ request()->is('dashboard') ? 'active' : '' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto" width="24" height="24" viewBox="0 0 24 24"
                     fill="none">
-                    <path class=" {{ request()->is('/') ? 'active' : '' }}"
+                    <path class=" {{ request()->is('dashboard') ? 'active' : '' }}"
                         d="M13.9931 3.19949L13.9934 3.19968L19.7533 7.22961C19.7533 7.22964 19.7533 7.22966 19.7534 7.22968C20.2226 7.55815 20.6668 8.09671 20.9943 8.72389C21.3217 9.35111 21.51 10.0243 21.51 10.6V17.38C21.51 19.6539 19.6638 21.5 17.39 21.5H6.60999C4.33754 21.5 2.48999 19.6453 2.48999 17.37V10.47C2.48999 9.93556 2.66038 9.29648 2.95857 8.69086C3.25662 8.08551 3.66106 7.55688 4.08751 7.22425L4.08761 7.22417L9.09624 3.31524C9.09645 3.31507 9.09667 3.3149 9.09689 3.31473C10.4337 2.27943 12.6028 2.22541 13.9931 3.19949ZM12 19.25C12.6861 19.25 13.25 18.6861 13.25 18V15C13.25 14.3139 12.6861 13.75 12 13.75C11.3138 13.75 10.75 14.3139 10.75 15V18C10.75 18.6861 11.3138 19.25 12 19.25Z"
                         stroke="#3D3D3D" />
                 </svg>

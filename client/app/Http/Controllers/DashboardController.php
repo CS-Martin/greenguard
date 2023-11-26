@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Prediction;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -11,9 +11,15 @@ class DashboardController extends Controller
     {
         # Get 5 latest user predictions
         $predictions = $request->user()->predictions()->latest()->take(5)->get();
+        $weatherData = (new WeatherController())->getWeather();
+        $currentDate = Carbon::now();
 
+        // return dd(['weatherData' => $weatherData],
+        //     ['predictions' => $predictions]);
         return view('dashboard', [
-            'predictions' => $predictions
+            'predictions' => $predictions,
+            'weatherData' => $weatherData,
+            'currentDate' => $currentDate,
         ]);
     }
 }

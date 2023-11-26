@@ -1,4 +1,4 @@
-<div class="fixed top-0 sm:w-[500px] px-6 flex bg-white items-center justify-between h-[65px] w-full mx-auto border-b mb-6 z">
+<div class="fixed top-0 sm:w-[500px] px-6 flex bg-white items-center justify-between h-[65px] w-full mx-auto border-b mb-6 z-20">
     <div class="flex gap-x-3 font-bold">
         @if (request()->is('history') || request()->is('prediction/*') || request()->is('chatbot') || request()->is('profile') || request()->is('chat'))
             <a href="{{ url()->previous() }}">
@@ -9,7 +9,7 @@
             </a>
         @endif
 
-        @if (request()->is('/'))
+        @if (request()->is('dashboard'))
             <img src="{{ asset('assets/greengard_logo.png') }}" width="100" alt="">
         @elseif (request()->is('history'))
             <p>History</p>
