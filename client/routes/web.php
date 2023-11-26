@@ -31,7 +31,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
     // Dashboard
-    Route::get('/', [DashboardController::class, 'show'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
 
     // History
     Route::get('/history', [HistoryController::class, 'show'])->name('history');
@@ -54,5 +54,6 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/prediction', [PredictionController::class, 'deleteAll'])->name('prediction.delete.all');
 
     // Weather
-    Route::get('/weather', [WeatherController::class, 'getWeather'])->name('getWeather');
+    // Route::get('/dashboard', [WeatherController::class, 'getWeather'])->name('getWeather');
+    Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard.show');
 });

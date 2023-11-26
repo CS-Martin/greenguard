@@ -2,7 +2,59 @@
 @section('content')
     <div>
         <div>
-            <div class="position-relative h-screen px-6 py-24">
+            <div class="position-relative h-[100%] px-6 py-24">
+                <div>
+                    <div class="text-center">
+                        <p class="font-bold ">{{ $weatherData['location'] }} City</p>
+                        <p class=" text-sm text-[#8A8A8A]">{{ $currentDate->format('F j, Y g:i A') }} <br>
+                            {{ $currentDate->format('H:i') }}</p>
+                    </div>
+
+                    <div class="flex">
+                        <div class="w-1/2">
+                            <img src="{{ asset('assets/weather/cloudy.png') }}" width="150" class="mx-auto" alt="">
+                        </div>
+                        <div class="w-1/2 my-auto text-center border-l">
+                            <p class="font-bold text-4xl">{{ $weatherData['temperature'][0] }}°C</p>
+                            <p>Feels like 150°C</p>
+                        </div>
+                    </div>
+
+                    <div class="flex text-center mt-2">
+                        <div class="w-1/3">
+                            <div class="shadow-lg rounded-md w-24 mx-auto">
+                                <div class="flex justify-center ">
+                                    <img src="{{ asset('assets/wind.png') }}" width="35" alt="">
+                                </div>
+                                <p class="mt-1">2.07km/h</p>
+                            </div>
+                            <p class="py-2 text-[#8A8A8A]">Wind</p>
+                        </div>
+                        <div class="w-1/3">
+                            <div class="shadow-lg rounded-md w-24 mx-auto">
+                                <div class="flex justify-center">
+                                    <img src="{{ asset('assets/cloud.png') }}" width="35" alt="">
+                                </div>
+                                <p class="mt-1">{{ $weatherData['clouds'][0] }}km/h</p>
+                            </div>
+                            <p class="py-2 text-[#8A8A8A]">Cloudy</p>
+                        </div>
+                        <div class="w-1/3">
+                            <div class="shadow-lg rounded-md w-24 mx-auto">
+                                <div class="flex justify-center">
+                                    <img src="{{ asset('assets/humidity.png') }}" width="35" alt="">
+                                </div>
+                                <p class="mt-1">{{ $weatherData['humidity'][0] }}%</p>
+                            </div>
+                            <p class="py-2 text-[#8A8A8A]">Humidity</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <x-weather-card :weatherData="$weatherData" />
+                    </div>
+                </div>
+
                 <div>
                     <div class="pb-[1rem]">
                         <p class="font-bold pb-0">Make Prediction</p>
@@ -75,9 +127,6 @@
         }
     </style>
     <script>
-        // document.getElementById('cameraButton').addEventListener('click', function() {
-        //     document.getElementById('fileInput').click();
-        // });
         document.getElementById('cameraButton').addEventListener('click', function() {
             document.getElementById('file').click();
         });
@@ -86,6 +135,9 @@
             if (this.files && this.files[0]) {
                 // Submit the form automatically when the file is chosen
                 document.getElementById('cameraForm').submit();
+
+                // Reset the form to clear the input field
+                document.getElementById('cameraForm').reset();
             }
         });
     </script>
