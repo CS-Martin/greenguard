@@ -2,7 +2,6 @@
 @section('content')
     <div>
         <div>
-            <x-header />
             <div class="position-relative px-6 py-24 h-[100%]">
                 <div class="text-center pb-5 border-b">
                     <img src="data:image/jpeg;base64,{{ base64_encode($image) }}" alt="This contains the image predicted"
@@ -13,14 +12,7 @@
 
                 <div class="text-center">
                     <div class="py-4">
-                        <button>
-                            <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                viewBox="0 0 24 24" fill="none">
-                                <path d="M12.5 5V19M20 12H5" stroke="#2CA464" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                            <small>Add to History</small>
-                        </button>
+
                     </div>
                 </div>
 
@@ -44,6 +36,5 @@
                 </div>
             </div>
         </div>
-        <x-bottom-nav />
     </div>
 @endsection

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
     <div>
-        <x-header />
         <div>
             <div class="h-screen position-relative px-6 py-24">
                 <div class="h-full px-3 overflow-y-auto dark:bg-gray-800">
@@ -48,6 +47,5 @@
                 </div>
             </div>
         </div>
-        <x-bottom-nav />
     </div>
 @endsection

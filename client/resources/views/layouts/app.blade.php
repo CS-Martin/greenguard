@@ -13,9 +13,16 @@
 
 <body class="bg-slate-100">
     <div class="w-full sm:w-[500px] bg-[#FDFDFD] m-auto p-0">
+        @if (auth()->check())
+            <x-header />
+        @endif
         <main>
+
             @yield('content')
         </main>
+        @if (auth()->check())
+            <x-bottom-nav />
+        @endif
     </div>
 </body>
 

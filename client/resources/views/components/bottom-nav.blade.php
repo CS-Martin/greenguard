@@ -1,4 +1,4 @@
-<div class="fixed  bottom-0 sm:w-[500px] w-full p-4 bg-white text-white  border-t mx-auto justify-center">
+<div class="fixed bottom-0 sm:w-[500px] w-full p-4 bg-white text-white  border-t mx-auto justify-center">
     <div class=" flex flex-row items-center justify-evenly gap-x-16 py-2">
         <a href="{{ route('dashboard') }}">
             <button class="text-gray-600 {{ request()->is('/') ? 'active' : '' }}">
