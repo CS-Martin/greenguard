@@ -92,6 +92,7 @@ class WeatherController extends Controller
         $humidity = $responseData['hourly']['relative_humidity_2m'];
         $weather = WeatherController::convertWeatherCode($responseData['hourly']['weather_code']);
         $clouds = $responseData['hourly']['cloud_cover'];
+        $wind = $responseData['hourly']['wind_speed_10m'];
 
         return (
             compact(
@@ -99,7 +100,8 @@ class WeatherController extends Controller
                 'temperature',
                 'humidity',
                 'weather',
-                'clouds'
+                'clouds',
+                'wind',
             )
         );
     }
