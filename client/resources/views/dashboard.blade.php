@@ -26,7 +26,7 @@
                                 <div class="flex justify-center ">
                                     <img src="{{ asset('assets/wind.png') }}" width="35" alt="">
                                 </div>
-                                <p class="mt-1">2.07km/h</p>
+                                <p class="mt-1"> {{ $weatherData['wind'][0] }}km/h </p>
                             </div>
                             <p class="py-2 text-[#8A8A8A]">Wind</p>
                         </div>
