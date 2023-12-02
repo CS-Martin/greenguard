@@ -39,14 +39,6 @@ services:
       - ./db-data:/var/lib/mysql
     networks:
       - internal
-  api:
-    build:
-      context: ./client
-      dockerfile: Dockerfile
-    volumes:
-      - .:/var/www/html
-    ports:
-      - "8000:8000"
   greenguard-api:
     build:
       context: ./greenguard-api
