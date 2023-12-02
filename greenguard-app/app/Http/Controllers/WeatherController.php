@@ -63,7 +63,6 @@ class WeatherController extends Controller
     public function getWeather()
     {
         $days = 1;
-        //$ip = '49.35.41.195'; //For static IP address get
         $ip = request()->ip(); //Dynamic IP address get
         $data = Location::get($ip);
 
@@ -85,7 +84,8 @@ class WeatherController extends Controller
             return str("Failed to retrieve weather data");
         }
         $responseData = $response->json();
-        // return dd($responseData['hourly']['weather_code']);
+
+        // dd(date('h:i:s'));
 
         $location = WeatherController::getLocation($latitude, $longitude);
         $temperature = $responseData['hourly']['temperature_2m'];

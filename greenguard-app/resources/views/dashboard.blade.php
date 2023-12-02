@@ -6,8 +6,7 @@
                 <div>
                     <div class="text-center">
                         <p class="font-bold ">{{ $weatherData['location'] }} City</p>
-                        <p class=" text-sm text-[#8A8A8A]">{{ $currentDate->format('F j, Y g:i A') }} <br>
-                            {{ $currentDate->format('H:i') }}</p>
+                        <p class=" text-sm text-[#8A8A8A]">{{ $currentDate->format('F j, Y g:i A') }} <br></p>
                     </div>
 
                     <div class="flex">
@@ -16,7 +15,7 @@
                         </div>
                         <div class="w-1/2 my-auto text-center border-l">
                             <p class="font-bold text-4xl">{{ $weatherData['temperature'][0] }}°C</p>
-                            <p>Feels like 150°C</p>
+                            {{-- <p>Feels like 150°C</p> --}}
                         </div>
                     </div>
 
@@ -74,7 +73,7 @@
                     </div>
 
                     <div class="mb-2">
-                        <p class="font-bold">5 Recent Detections</p>
+                        <p class="font-bold">{{$predictions->count()}} Recent Detections</p>
                     </div>
 
                     @if ($predictions->count() <= 0)
