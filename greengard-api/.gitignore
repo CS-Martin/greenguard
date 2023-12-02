@@ -1,2 +1,3 @@
 model/*.h5
 scripts
+__pycache__/
