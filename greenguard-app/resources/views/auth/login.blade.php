@@ -29,8 +29,13 @@
                         <label for="password"
                             class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Password</label>
 
-                        <button type="button" id="togglePasswordButton"
-                            class="absolute right-4 top-1/2 transform -translate-y-1/2">
+                        <div id="tooltip-left" role="tooltip"
+                            class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                            Show Password
+                            <div class="tooltip-arrow" data-popper-arrow></div>
+                        </div>
+                        <button type="button" id="togglePasswordButton" data-tooltip-target="tooltip-left" data-tooltip-placement="left"
+                            data-bs-title="Tooltip on top" class="absolute right-4 top-1/2 transform -translate-y-1/2">
                             <!-- Initial SVG for hiding password -->
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="#168a5f" class="w-6 h-6" id="hidePasswordSvg">
