@@ -2,7 +2,7 @@
 @section('content')
     <div>
         <div class="mb-6">
-            <div class="position-relative h-[100%] px-6 py-24">
+            <div class="position-relative h-[100%] min-h-screen px-6 py-24">
                 <div>
                     <div class="text-center">
                         <p class="font-bold ">{{ $weatherData['location'] }} City</p>

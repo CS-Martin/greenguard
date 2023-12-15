@@ -4,7 +4,7 @@
     <div>
         <div>
             {{-- chat body --}}
-            <div class="position-relative px-6 py-24 h-screen" id="chat-container">
+            <div class="position-relative px-6 py-24 h-[100%] min-h-screen" id="chat-container">
 
             </div>
 
