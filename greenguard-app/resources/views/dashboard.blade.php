@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div>
-        <div>
+        <div class="mb-6">
             <div class="position-relative h-[100%] px-6 py-24">
                 <div>
                     <div class="text-center">
@@ -21,7 +21,7 @@
 
                     <div class="flex text-center mt-2">
                         <div class="w-1/3">
-                            <div class="shadow-lg rounded-md w-24 mx-auto">
+                            <div class=" shadow-md rounded-md w-24 mx-auto">
                                 <div class="flex justify-center ">
                                     <img src="{{ asset('assets/wind.png') }}" width="35" alt="">
                                 </div>
@@ -30,7 +30,7 @@
                             <p class="py-2 text-[#8A8A8A]">Wind</p>
                         </div>
                         <div class="w-1/3">
-                            <div class="shadow-lg rounded-md w-24 mx-auto">
+                            <div class="shadow-md rounded-md w-24 mx-auto">
                                 <div class="flex justify-center">
                                     <img src="{{ asset('assets/cloud.png') }}" width="35" alt="">
                                 </div>
@@ -39,7 +39,7 @@
                             <p class="py-2 text-[#8A8A8A]">Cloudy</p>
                         </div>
                         <div class="w-1/3">
-                            <div class="shadow-lg rounded-md w-24 mx-auto">
+                            <div class="shadow-md rounded-md w-24 mx-auto">
                                 <div class="flex justify-center">
                                     <img src="{{ asset('assets/humidity.png') }}" width="35" alt="">
                                 </div>
@@ -88,11 +88,11 @@
                         <x-history-card :prediction="$prediction" />
                     @endforeach
 
-                    <div class="fixed sm:w-[450px] text-right bottom-[16%]">
+                    <div class="fixed w-full pr-[10%] sm:pr-[0] sm:w-[450px] text-right bottom-[16%]">
                         <form id="cameraForm" action="{{ route('prediction.post') }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
-                            <button class="p-6 rounded-full bg-green-600 shadow-2xl" id="cameraButton" type="button">
+                            <button class=" sm:p-6 p-5 rounded-full bg-green-600 shadow-2xl" id="cameraButton" type="button">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31"
                                     fill="none">
                                     <path
