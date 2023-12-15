@@ -31,7 +31,7 @@
 
                         <div id="tooltip-left" role="tooltip"
                             class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                            Show
+                            Show Password
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
                         <button type="button" id="togglePasswordButton" data-tooltip-target="tooltip-left" data-tooltip-placement="left"
