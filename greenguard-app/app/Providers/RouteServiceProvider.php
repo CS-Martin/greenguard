@@ -36,5 +36,9 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
+
+        if ($this->app->environment('local')) {
+            Route::redirect('/', '/login');
+        }
     }
 }
