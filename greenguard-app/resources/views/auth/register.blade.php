@@ -88,7 +88,7 @@
                 </div>
 
                 <button type="submit" id="submitButton"
-                    class="text-white mb-6 bg-[#1CB87E] hover:bg-[#168a5f] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-4 text-center">Create
+                    class="text-white mb-2 bg-[#1CB87E] hover:bg-[#168a5f] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-4 text-center">Create
                     Account</button>
                 <div class="flex flex-row gap-x-2">
                     <p>Already have an account?</p>
